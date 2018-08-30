@@ -1,0 +1,65 @@
+<html>
+<script type="text/javascript " src="utils/mathUtils.js"></script>
+<script type="text/javascript">
+    /* 
+     *@autor De Jesus Guillermo <guille17@gmail.com>
+     */
+
+    const NO_POINT_FOUND = 0;
+    let timers = [];
+    let responseTimes = [];
+    let fixedPoints = [];
+
+    let usegaFactor = 0;
+    let liuFactor = 0;
+    let biniFactor = 0;
+    let hyperPeriod = 0;
+
+    let tasks = [];
+
+    let initTask = function(tasks) {
+        return {
+            responseTimes: responseTimes(tasks),
+            usageFactor: usageFactor(tasks),
+            liuFactor: liuFactor(tasks),
+            biniFactor: biniFactor(tasks),
+            hyperPeriod: hyperPeriod(tasks),
+            fixedPoints: fixedPoints(tasks, this.responseTimes)
+        }
+    };
+
+    function update() {
+        return true;
+    }
+
+    function satisfiedBini() {
+        return biniFactor <= 2.0;
+    }
+
+    function satisfiesLiu() {
+        return usageFactor <= liuFactor
+    }
+
+    function satisfiesRm() {
+        for (let i = fixedPoints.length; i-- > 0;) {
+            if (fixedPoints[i] == NO_POINT_FOUND) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    function hyperPeriod(tasks) {
+        return lcm(tasks);
+    }
+
+    function responseTimes(tasks) {
+        let times = [];
+        for (let curr = 0; curr < tasks.length; curr++) {
+            times.push()
+        }
+        return times;
+    }
+</script>
+
+</html>
